@@ -1,2 +1,13 @@
 ---
 # vars file for jenkins_server
+jenkins_port: 8080
+jenkins_url: http://jenkins.plone.org
+jenkins_plugins:
+    - Email-ext plugin
+    - Green Balls
+    - JobConfigHistory
+    - Workspace Cleanup Plugin
+    - Git Plugin
+    - Robot Framework Plugin
+    - Xvfb Plugin
+jenkins_nodes:

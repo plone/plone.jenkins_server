@@ -1,2 +1,17 @@
 ---
 # tasks file for jenkins_server
+
+- name: Install dependencies
+  sudo: yes
+  apt: name {{ items }} state=installed
+  with_items:
+    - python-software-properties
+    - python-pycurl
+
+- name: Add jenkins apt-key
+  sudo: yes
+  action: apt_key url={{ jenkins.deb.key }} state=present
+
+- name: Add Jenkins repository
+  sudo: yes
+  action: apt_repository repo='{{ jenkins.deb.repo }}' state=present
