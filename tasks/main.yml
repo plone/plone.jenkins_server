@@ -1,0 +1,31 @@
+---
+# tasks file for jenkins_server
+
+- name: Update
+  apt: update_cache=yes
+
+- name: Add jenkins apt-key
+  sudo: yes
+  apt_key: url={{ jenkins.deb.key }} state=present
+
+- name: Add Jenkins repository
+  sudo: yes
+  apt_repository: repo={{ jenkins.deb.repo }} state=present
+
+- name: Install dependencies
+  sudo: yes
+  apt: name {{ items }} state=installed
+  with_items:
+    - jenkins
+    - nginx
+
+- name: Upload nginx vhost template
+  template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
+
+- name: Create the link for site enabled specific configurations
+  file: path=/etc/nginx/sites-enabled/jenkins_vhost.conf state=link src=/etc/nginx/sites-available/jenkins_vhost.conf
+
+  notify: restart nginx
+
+# Todo: install jenkins plugins
+# Todo: use own nginx conf to make this shit faster
