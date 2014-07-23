@@ -4,5 +4,5 @@ jenkins_port: 8080
 jenkins_url: http://jenkins.plone.org
 jenkins_plugins:
 jenkins_nodes:
-jenkins_repo: deb http://pkg.jenkins-ci.org/debian-stable binary/
+jenkins_repo: 'deb http://pkg.jenkins-ci.org/debian-stable binary/'
 jenkins_key: http://pkg.jenkins-ci.org/debian-stable/jenkins-ci.org.key
