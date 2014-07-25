@@ -22,6 +22,10 @@
 - name: Upload nginx vhost template
   template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
 
+- name: Push jenkins conf
+  copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
+  notify: restart jenkins
+
 - name: Create the link for site enabled specific configurations
   file: path=/etc/nginx/sites-enabled/jenkins_vhost.conf state=link src=/etc/nginx/sites-available/jenkins_vhost.conf
 

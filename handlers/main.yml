@@ -3,5 +3,10 @@
   service: name=nginx state=started
 
 - name: restart nginx
-  service: name=nginx state=restartedhandlers file for jenkins_server
+  service: name=nginx state=restarted
+
+- name: restart jenkins
+  service: name=jenkins state=restarted
+
+
 
