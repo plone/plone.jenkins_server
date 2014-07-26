@@ -22,7 +22,7 @@
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
--name: Upload nginx.conf
+- name: Upload nginx.conf
  action: copy src=nginx.conf dest=/etc/nginx/nginx.conf notify: restart jenkins
 
 - name: Upload nginx vhost template
