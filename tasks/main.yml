@@ -94,7 +94,10 @@
 - name: Deactivate the default nginx site
   file: path=/etc/nginx/sites-enabled/default
           state=absent
-  notify: start nginx
+  notify: restart nginx
 
-
+- name: Install plugins
+  get_url: url=https://updates.jenkins-ci.org/latest/{{ item }}.hpi dest=/var/lib/jenkins/plugins
+  with_items: greenballs
+  notify: restart jenkins
 
