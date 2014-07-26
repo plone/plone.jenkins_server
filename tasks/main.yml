@@ -22,6 +22,12 @@
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
+- name: Install jenkins plugins
+  get_url: dest=/var/lib/jenkins/plugins url=http://updates.jenkins-ci.org/latest/{{ item }}.hpi
+           owner=jenkins group=nogroup
+  with_items: jenkins_plugins
+  notify: restart jenkins
+
 - name: Upload nginx.conf
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
   notify: restart jenkins
