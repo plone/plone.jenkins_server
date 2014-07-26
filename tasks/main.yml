@@ -23,7 +23,8 @@
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
 - name: Upload nginx.conf
- action: copy src=nginx.conf dest=/etc/nginx/nginx.conf notify: restart jenkins
+  action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
+  notify: restart jenkins
 
 - name: Upload nginx vhost template
   template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
