@@ -1,17 +1,17 @@
 Jenkins Server
 ==============
 
-Provisioning for a Jenkins CI server with Nginx for Plone projects.
+Provisioning for a [Jenkins CI server](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) for [Plone](https://plone.org/) projects.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+You can set different variables, to do that change the ones in *defaults/main.yml* or even better add them to *vars/main.yml*.
 
   * jenkins_port: The port Jenkins listens on (default: 8080).
 
@@ -19,12 +19,10 @@ A description of the settable variables for this role should go here, including 
 
   * jenkins_plugins: A list of Jenkins plugins that will be installed.
 
-  * jenkins_nodes: List of nodes that Jenkins server connects to.
+
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 - plone.jenkins_node (tbc)
 
@@ -36,7 +34,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: jenkins.plone.org
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: plone.jenkins_server }
 
 License
 -------
