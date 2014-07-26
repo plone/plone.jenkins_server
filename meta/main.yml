@@ -7,12 +7,10 @@ galaxy_info:
   min_ansible_version: 1.6.7
   platforms:
   - name: Ubuntu
-    - trusty
+    versions:
+      - trusty
   categories:
   - monitoring
-  - name: Ubuntu
-    versions:
-    - trusty
 dependencies: []
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.
