@@ -1,7 +1,7 @@
 Jenkins Server
 ==============
 
-Provisioning for a Jenkins CI server for Plone projects.
+Provisioning for a Jenkins CI server with Nginx for Plone projects.
 
 Requirements
 ------------
