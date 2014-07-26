@@ -22,15 +22,31 @@
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
+- name: Get the jenkins-cli jarfile from the Jenkins server
+  get_url: url=http://localhost:{{ jenkins_port }}/jnlpJars/jenkins-cli.jar
+           dest={{ jenkins_jar_location }} owner=jenkins group=nogroup
+  register: jarfile_get
+  until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
+  retries: 5
+  delay: 5
+
+- name: Create Jenkins updates folder
+  file: path=/var/lib/jenkins/updates owner=jenkins group=nogroup mode=0755 state=directory
+
+- name: Update Jenkins plugin data
+  shell: curl -L http://updates.jenkins-ci.org/update-center.json | sed '1d;$d' > /var/lib/jenkins/updates/default.json
+         creates=/var/lib/jenkins/updates/default.json
+
+- name: Permissions for default.json updates info
+  file: path=/var/lib/jenkins/updates/default.json owner=jenkins group=nogroup mode=0755
+
 - name: Install jenkins plugins
-  get_url: dest=/var/lib/jenkins/plugins url=http://updates.jenkins-ci.org/latest/{{ item }}.hpi
-           owner=jenkins group=nogroup
+  command: java -jar {{ jenkins_jar_location }} -s http://localhost:{{ jenkins_port }} install-plugin {{ item }}
   with_items: jenkins_plugins
   notify: restart jenkins
 
 - name: Upload nginx.conf
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
-  notify: restart jenkins
 
 - name: Upload nginx vhost template
   template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
@@ -45,5 +61,3 @@
 
 
 
-# Todo: install jenkins plugins
-# Todo: use own nginx conf to make this shit faster

@@ -2,6 +2,7 @@
 # defaults file for jenkins_server
 jenkins_port: 8080
 jenkins_url: jenkins.plone.org
+jenkins_jar_location: /var/lib/jenkins/jenkins-cli.jar
 jenkins_repo: http://pkg.jenkins-ci.org/debian-stable binary/
 jenkins_key: http://pkg.jenkins-ci.org/debian-stable/jenkins-ci.org.key
 jenkins_plugins:
