@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Plone Foundation
-  description:
+  description: Jenkins CI
   company: Plone Foundation
   license: license (GPLv2)
   min_ansible_version: 1.6.7
@@ -10,7 +10,7 @@ galaxy_info:
     versions:
       - trusty
   categories:
-  - monitoring
+  - development
 dependencies: []
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.
