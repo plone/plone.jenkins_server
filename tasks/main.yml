@@ -6,30 +6,37 @@
 
 - name: Add jenkins apt-key
   sudo: yes
-  apt_key: url={{ jenkins.deb.key }} state=present
+  apt_key: url={{ jenkins_key }} state=present
 
 - name: Add Jenkins repository
   sudo: yes
-  apt_repository: repo={{ jenkins.deb.repo }} state=present
+  apt_repository: repo='deb {{ jenkins_repo }}' update_cache=yes
 
 - name: Install dependencies
   sudo: yes
-  apt: name {{ items }} state=installed
+  apt: name={{ item }} state=installed
   with_items:
     - jenkins
     - nginx
 
-- name: Upload nginx vhost template
-  template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
-
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
-  notify: restart jenkins
+
+-name: Upload nginx.conf
+ action: copy src=nginx.conf dest=/etc/nginx/nginx.conf notify: restart jenkins
+
+- name: Upload nginx vhost template
+  template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
 
 - name: Create the link for site enabled specific configurations
   file: path=/etc/nginx/sites-enabled/jenkins_vhost.conf state=link src=/etc/nginx/sites-available/jenkins_vhost.conf
 
-  notify: restart nginx
+- name: Deactivate the default nginx site
+  file: path=/etc/nginx/sites-enabled/default
+          state=absent
+  notify: start nginx
+
+
 
 # Todo: install jenkins plugins
 # Todo: use own nginx conf to make this shit faster
