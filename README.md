@@ -11,7 +11,7 @@ None.
 Role Variables
 --------------
 
-You can set different variables, to do that change the ones in *defaults/main.yml* or even better add them to *vars/main.yml*.
+You can set different variables, that change the ones in *defaults/main.yml* or even better add them to *vars/main.yml*.
 
   * jenkins_port: The port Jenkins listens on (default: 8080).
 
