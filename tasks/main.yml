@@ -105,5 +105,8 @@
   with_items:
   - greenballs
   - robot
+  - github-oauth
+  - github
+  - clone-workspace-scm
   notify: restart jenkins
 
