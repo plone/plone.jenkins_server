@@ -102,6 +102,8 @@
 
 - name: Install plugins
   get_url: url=https://updates.jenkins-ci.org/latest/{{ item }}.hpi dest=/var/lib/jenkins/plugins
-  with_items: greenballs
+  with_items:
+  - greenballs
+  - robot
   notify: restart jenkins
 
