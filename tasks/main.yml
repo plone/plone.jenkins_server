@@ -18,6 +18,7 @@
   with_items:
     - jenkins
     - nginx
+    - curl
 
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
@@ -34,16 +35,15 @@
   retries: 5
   delay: 5
 
+# Get latest Jenkins update file
+- name: Get Jenkins updates
+  action: get_url url=http://updates.jenkins-ci.org/update-center.json dest={{ jenkins_updates_dest }} thirsty=yes mode=0440
+  register: jenkins_updates
+  tags: jenkinsplugins
 
-#- name: get jenkins updates
-#  get_url: url=http://updates.jenkins-ci.org/update-center.json dest='{{ jenkins_updates_dest }}' thirsty=yes mode=0444
-#  register: jenkins_updates
-#  tags: jenkinsplugins
-
-#- name: update-center jenkins
-#  shell: "cat {{ jenkins_updates_dest }} | sed '1d;$d' | curl -X POST -H 'Accept: application/json' -d @- http://localhost:{{ jenkins_port }}/updateCenter/byId/default/postBack"
-#  when: jenkins_updates.changed
-#  tags: jenkinsplugins
+# Jenkins Update-center
+- name: Update-center Jenkins
+  action: "shell cat {{ jenkins_updates_dest }} | sed '1d;$d' | curl -X POST -H 'Accept: application/json' -d @- http://localhost:{{ jenkins_port }}/updateCenter/byId/default/postBack"
 
 #- name: List plugins
 #  shell: java -jar {{ jenkins_jar_location }} -s http://localhost:{{ jenkins_port }} list-plugins | cut -f 1 -d ' '
