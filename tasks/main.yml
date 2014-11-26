@@ -22,6 +22,10 @@
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
+# If Jenkins is installed or updated, wait for pulling the Jenkins CLI
+- name: "{{ startup_delay_s | default(10) }}s delay while starting Jenkins"
+  wait_for: port=8080 delay={{ startup_delay_s | default(10) }}
+
 - name: Get the jenkins-cli jarfile from the Jenkins server
   get_url: url=http://localhost:{{ jenkins_port }}/jnlpJars/jenkins-cli.jar
            dest={{ jenkins_jar_location }} owner=jenkins group=nogroup
