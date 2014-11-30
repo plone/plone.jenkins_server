@@ -102,11 +102,6 @@
 
 - name: Install plugins
   get_url: url=https://updates.jenkins-ci.org/latest/{{ item }}.hpi dest=/var/lib/jenkins/plugins
-  with_items:
-  - greenballs
-  - robot
-  - github-oauth
-  - github
-  - clone-workspace-scm
+  with_items: jenkins_plugins
   notify: restart jenkins
 
