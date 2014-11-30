@@ -19,6 +19,7 @@
     - jenkins
     - nginx
     - curl
+    - git
 
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
