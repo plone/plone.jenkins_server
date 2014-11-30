@@ -11,9 +11,19 @@ galaxy_info:
       - trusty
   categories:
   - development
-dependencies: []
-  # List your role dependencies here, one per line. Only
-  # dependencies available via galaxy should be listed here.
-  # Be sure to remove the '[]' above if you add dependencies
-  # to this list.
-
+dependencies:
+ - { role: ansible-jenkins,
+     plugins: [
+       'greenballs',
+       'robot',
+       'github-oauth',
+       'github',
+       'clone-workspace-scm',
+       'github-api', # dep
+       'git-client', # dep
+       'scm-api', # dep
+       'matrix-project', # dep
+       'mailer', # dep
+       'git', # dep
+     ]
+   }
