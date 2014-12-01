@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>1.591</version>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="org.jenkinsci.plugins.GithubAuthorizationStrategy" plugin="github-oauth@0.20">
+    <rootACL>
+      <organizationNameList class="linked-list">
+      {% for item in github_orgs %}
+        <string>{{ item }}</string>
+      {% endfor %}
+      </organizationNameList>
+      <adminUserNameList class="linked-list">
+      {% for item in jenkins_admins %}
+        <string>{{ item }}</string>
+      {% endfor %}
+      </adminUserNameList>
+      <authenticatedUserReadPermission>false</authenticatedUserReadPermission>
+      <useRepositoryPermissions>false</useRepositoryPermissions>
+      <authenticatedUserCreateJobPermission>false</authenticatedUserCreateJobPermission>
+      <allowGithubWebHookPermission>true</allowGithubWebHookPermission>
+      <allowCcTrayPermission>false</allowCcTrayPermission>
+      <allowAnonymousReadPermission>true</allowAnonymousReadPermission>
+    </rootACL>
+  </authorizationStrategy>
+  <securityRealm class="org.jenkinsci.plugins.GithubSecurityRealm">
+    <githubWebUri>https://github.com</githubWebUri>
+    <githubApiUri>https://api.github.com</githubApiUri>
+    <clientID>{{ github_app_client_id }}</clientID>
+    <clientSecret>{{ github_app_client_secret }}</clientSecret>
+  </securityRealm>
+</hudson>

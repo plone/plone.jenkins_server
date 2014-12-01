@@ -2,3 +2,12 @@
 # defaults file for jenkins_server
 jenkins_port: 8080
 jenkins_url: jenkins.plone.org
+github_app_client_id: 72aeebd02428afe4e440
+github_app_client_secret: 4c81567b039dbb04c528356f9479c3d498ba8eb4
+jenkins_admins:
+  - tisto
+  - gforcada
+  - svx
+github_orgs:
+  - plone
+  - collective

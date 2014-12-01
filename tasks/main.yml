@@ -13,6 +13,11 @@
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
+- name: Configure jenkins
+  template: src=jenkins_config.xml.j2 dest=/var/lib/jenkins/config.xml
+  notify:
+    - 'Restart Jenkins'
+
 - name: Upload nginx.conf
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
 
