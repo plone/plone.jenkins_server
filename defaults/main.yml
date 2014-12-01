@@ -11,3 +11,7 @@ jenkins_admins:
 github_orgs:
   - plone
   - collective
+dependencies:
+  - nginx
+  - python-virtualenv
+  - python-dev

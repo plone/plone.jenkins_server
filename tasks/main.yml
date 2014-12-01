@@ -4,11 +4,10 @@
 - name: Update
   apt: update_cache=yes
 
-- name: Install dependencies
+- name: Install system dependencies
   sudo: yes
   apt: name={{ item }} state=installed
-  with_items:
-    - nginx
+  with_items: dependencies
 
 - name: Push jenkins conf
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
