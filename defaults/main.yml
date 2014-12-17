@@ -15,3 +15,9 @@ dependencies:
   - nginx
   - python-virtualenv
   - python-dev
+  - subversion
+  - gcc
+  - zlib1g-dev # PIL dep
+  - libjpeg-dev # PIL dep
+  - libxml2-dev # lxml dep
+  - libxslt1-dev # lxml dep
