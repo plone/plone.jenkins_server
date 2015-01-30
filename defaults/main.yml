@@ -21,3 +21,5 @@ dependencies:
   - libjpeg-dev # PIL dep
   - libxml2-dev # lxml dep
   - libxslt1-dev # lxml dep
+  - poppler-utils # dep for pdftohtml
+  - wv # for wvHtml and related converters from Microsoft formats
