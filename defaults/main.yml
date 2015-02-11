@@ -17,6 +17,7 @@ dependencies:
   - python-dev
   - subversion
   - gcc
+  - xvfb
   - zlib1g-dev # PIL dep
   - libjpeg-dev # PIL dep
   - libxml2-dev # lxml dep
