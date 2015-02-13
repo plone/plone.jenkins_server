@@ -31,6 +31,7 @@ dependencies:
        'github-oauth',
        'github',
        'clone-workspace-scm',
+       'htmlpublisher',
        'github-api', # dep
        'git-client', # dep
        'scm-api', # dep
