@@ -14,7 +14,8 @@ galaxy_info:
 dependencies:
  - { role: ansible-jenkins,
      plugins: [
-       'dashboard-view',
+       'dashboard-view',  # adds dashboard view for front-page
+       'extra-columns',  # adds test results column to views
        'greenballs',
        'robot',
        'notification',
