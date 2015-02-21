@@ -2,6 +2,7 @@
 # tasks file for jenkins_server
 
 - name: Update
+  sudo: yes
   apt: update_cache=yes
 
 - name: Install system dependencies
@@ -10,23 +11,29 @@
   with_items: dependencies
 
 - name: Push jenkins conf
+  sudo: yes
   copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
 
 - name: Configure jenkins
+  sudo: yes
   template: src=jenkins_config.xml.j2 dest=/var/lib/jenkins/config.xml
   notify:
     - 'Restart Jenkins'
 
 - name: Upload nginx.conf
+  sudo: yes
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
 
 - name: Upload nginx vhost template
+  sudo: yes
   template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
 
 - name: Create the link for site enabled specific configurations
+  sudo: yes
   file: path=/etc/nginx/sites-enabled/jenkins_vhost.conf state=link src=/etc/nginx/sites-available/jenkins_vhost.conf
 
 - name: Deactivate the default nginx site
+  sudo: yes
   file: path=/etc/nginx/sites-enabled/default
           state=absent
   notify: restart nginx
