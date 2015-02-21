@@ -17,6 +17,7 @@ dependencies:
        'dashboard-view',  # adds dashboard view for front-page
        'extra-columns',  # adds test results column to views
        'greenballs',
+       'simple-theme-plugin',
        'robot',
        'notification',
        'throttle-concurrents',
