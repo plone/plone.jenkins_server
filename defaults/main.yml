@@ -13,14 +13,3 @@ github_orgs:
   - collective
 dependencies:
   - nginx
-  - python-virtualenv
-  - python-dev
-  - subversion
-  - gcc
-  - xvfb
-  - zlib1g-dev # PIL dep
-  - libjpeg-dev # PIL dep
-  - libxml2-dev # lxml dep
-  - libxslt1-dev # lxml dep
-  - poppler-utils # dep for pdftohtml
-  - wv # for wvHtml and related converters from Microsoft formats
