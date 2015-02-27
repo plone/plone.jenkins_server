@@ -172,7 +172,7 @@
       <includeRegex>pull-request-.*</includeRegex>
       <recurse>false</recurse>
     </listView>
-    <listView>
+    <hudson.plugins.view.dashboard.Dashboard>
       <owner class="hudson" reference="../../.."/>
       <name>Core</name>
       <filterExecutors>false</filterExecutors>
@@ -198,7 +198,15 @@
         <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.5.0"/>
       </columns>
       <recurse>false</recurse>
-    </listView>
+      <useCssStyle>false</useCssStyle>
+      <includeStdJobList>false</includeStdJobList>
+      <leftPortletWidth>50%</leftPortletWidth>
+      <rightPortletWidth>50%</rightPortletWidth>
+      <leftPortlets/>
+      <rightPortlets/>
+      <topPortlets/>
+      <bottomPortlets/>
+    </hudson.plugins.view.dashboard.Dashboard>
   </views>
   <primaryView>Core</primaryView>
 </hudson>
