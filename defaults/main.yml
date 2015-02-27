@@ -9,6 +9,7 @@ jenkins_admins:
   - tisto
   - gforcada
   - svx
+  - bloodbare
 github_orgs:
   - plone
   - collective
