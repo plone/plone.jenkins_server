@@ -15,7 +15,8 @@ server {
     client_body_buffer_size 128k;
 
   }
-  location /roboto {
+  location /roboto/ {
+    rewrite                 ^/roboto/(.*) /$1 break;
     proxy_pass              http://localhost:{{ roboto_port }};
     proxy_set_header        Host $host;
     proxy_set_header        X-Real-IP $remote_addr;
