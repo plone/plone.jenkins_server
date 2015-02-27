@@ -20,6 +20,12 @@
   notify:
     - 'Restart Jenkins'
 
+- name: Configure jenkins location
+  sudo: yes
+  template: src=jenkins_location.xml.j2 dest=/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
+  notify:
+    - 'Restart Jenkins'
+
 - name: Upload nginx.conf
   sudo: yes
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
