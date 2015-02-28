@@ -191,21 +191,44 @@
         <hudson.views.StatusColumn/>
         <hudson.views.WeatherColumn/>
         <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
+        <jenkins.plugins.extracolumns.BuildDurationColumn plugin="extra-columns@1.15">
+          <buildDurationType>1</buildDurationType>
+        </jenkins.plugins.extracolumns.BuildDurationColumn>
         <hudson.views.LastDurationColumn/>
+        <jenkins.plugins.extracolumns.TestResultColumn plugin="extra-columns@1.15">
+          <testResultFormat>3</testResultFormat>
+        </jenkins.plugins.extracolumns.TestResultColumn>
+        <jenkins.plugins.extracolumns.TestResultColumn plugin="extra-columns@1.15">
+          <testResultFormat>4</testResultFormat>
+        </jenkins.plugins.extracolumns.TestResultColumn>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.0"/>
         <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.5.0"/>
       </columns>
       <recurse>false</recurse>
       <useCssStyle>false</useCssStyle>
-      <includeStdJobList>false</includeStdJobList>
+      <includeStdJobList>true</includeStdJobList>
       <leftPortletWidth>50%</leftPortletWidth>
       <rightPortletWidth>50%</rightPortletWidth>
       <leftPortlets/>
       <rightPortlets/>
-      <topPortlets/>
-      <bottomPortlets/>
+      <topPortlets>
+        <hudson.plugins.view.dashboard.test.TestTrendChart>
+          <id>dashboard_portlet_17238</id>
+          <name>Test Trend Chart</name>
+          <graphWidth>900</graphWidth>
+          <graphHeight>220</graphHeight>
+          <dateRange>0</dateRange>
+          <dateShift>0</dateShift>
+          <displayStatus>ALL</displayStatus>
+        </hudson.plugins.view.dashboard.test.TestTrendChart>
+      </topPortlets>
+      <bottomPortlets>
+        <hudson.plugins.view.dashboard.core.ImagePortlet>
+          <id>dashboard_portlet_2475</id>
+          <name>Sponsors</name>
+          <url>https://raw.githubusercontent.com/plone/jenkins.plone.org/master/etc/jenkins-plone-org-sponsors.png</url>
+        </hudson.plugins.view.dashboard.core.ImagePortlet>
+      </bottomPortlets>
     </hudson.plugins.view.dashboard.Dashboard>
   </views>
   <primaryView>Core</primaryView>
