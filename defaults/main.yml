@@ -19,3 +19,5 @@ dependencies:
 #  - Node1
 #  - Node2
 # admin_email: joe@doe.io
+# simple_theme_css_url: http://somewhere.com/theme.css
+# simple_theme_js_url: http://somewhere.com/theme.js

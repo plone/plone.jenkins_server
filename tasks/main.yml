@@ -26,6 +26,12 @@
   notify:
     - 'Restart Jenkins'
 
+- name: Configure jenkins theme
+  sudo: yes
+  template: src=jenkins_simple_theme.xml.j2 dest=/var/lib/jenkins/org.codefirst.SimpleThemeDecorator.xml
+  notify:
+    - 'Restart Jenkins'
+
 - name: Upload nginx.conf
   sudo: yes
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
