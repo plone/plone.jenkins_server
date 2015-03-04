@@ -15,6 +15,7 @@ server {
     client_body_buffer_size 128k;
 
   }
+
   location /roboto/ {
     rewrite                 ^/roboto/(.*) /$1 break;
     proxy_pass              http://localhost:{{ roboto_port }};
@@ -27,6 +28,20 @@ server {
     proxy_buffers           4 32k;
     client_max_body_size    8m;
     client_body_buffer_size 128k;
-
   }
+
+  location /munin/static/ {
+    alias /etc/munin/static/;
+    expires modified +1w;
+  }
+
+  location /munin/ {
+    #auth_basic            "Restricted";
+    # Create the htpasswd file with the htpasswd tool.
+    #auth_basic_user_file  /etc/nginx/passwdfile;
+    index index.html;
+    alias /var/cache/munin/www/;
+    expires modified +310s;
+  }
+
 }
