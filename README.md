@@ -43,6 +43,12 @@ Example of how to use this role:
         github_app_client_id: 1234567890
         github_app_client_secret: 1234567890abcdef1234567890abcdef1234567890abcdef
 
+Nodes playbook
+--------------
+
+Looking for the ansible playbook for nodes?
+Look no further: [plone.jenkins_node](https://github.com/plone/plone.jenkins_node/)
+
 License
 -------
 
