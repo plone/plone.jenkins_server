@@ -42,7 +42,7 @@
       <mode>NORMAL</mode>
       <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
       <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.9">
-        <host>{{ item | lower }}.{{ jenkins_url }}</host>
+        <host>{{ item | lower }}.{{ jenkins_server_name }}</host>
         <port>22</port>
         <credentialsId>107aa3bc-09b9-42b9-8298-394fe1d88532</credentialsId>
         <maxNumRetries>0</maxNumRetries>
