@@ -14,6 +14,7 @@ galaxy_info:
 dependencies:
  - { role: ansible-jenkins,
      plugins: [
+       'python',
        'violations',
        'build-user-vars-plugin',
        'jquery',
