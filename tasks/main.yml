@@ -32,6 +32,10 @@
   notify:
     - 'Restart Jenkins'
 
+- name: Whitelist paths for node -> master connection
+  sudo: yes
+  action: copy src=slave-to-master-control.conf dest=/var/lib/jenkins/secrets/filepath-filters.d/50-gui.conf
+
 - name: Upload nginx.conf
   sudo: yes
   action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
