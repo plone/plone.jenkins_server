@@ -171,29 +171,6 @@
       <includeRegex>.*dependencies.*</includeRegex>
       <recurse>false</recurse>
     </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Pull Requests</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.5.0"/>
-      </columns>
-      <includeRegex>pull-request-.*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
     <hudson.plugins.view.dashboard.Dashboard>
       <owner class="hudson" reference="../../.."/>
       <name>Core</name>
