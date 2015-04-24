@@ -3,7 +3,7 @@
 
 - name: Upload nginx.conf
   sudo: yes
-  action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
 
 - name: Upload nginx vhost template
   sudo: yes

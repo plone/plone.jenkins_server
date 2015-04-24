@@ -26,8 +26,8 @@
 # false in slave-to-master-switch means that is enabled
 - name: Enable security between nodes and master
   sudo: yes
-  action: copy src=slave-to-master-switch dest=/var/lib/jenkins/secrets/slave-to-master-security-kill-switch
+  copy: src=slave-to-master-switch dest=/var/lib/jenkins/secrets/slave-to-master-security-kill-switch
 
 - name: Whitelist paths for node -> master connection
   sudo: yes
-  action: copy src=slave-to-master-control.conf dest=/var/lib/jenkins/secrets/filepath-filters.d/50-gui.conf
+  copy: src=slave-to-master-control.conf dest=/var/lib/jenkins/secrets/filepath-filters.d/50-gui.conf
