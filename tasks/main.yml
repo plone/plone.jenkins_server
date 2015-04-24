@@ -10,51 +10,8 @@
   apt: name={{ item }} state=installed
   with_items: dependencies
 
-- name: Push jenkins conf
-  sudo: yes
-  copy: src=jenkins.conf dest=/etc/default/jenkins mode=0644
+# Configure jenkins
+- include: jenkins.yml
 
-- name: Configure jenkins
-  sudo: yes
-  template: src=jenkins_config.xml.j2 dest=/var/lib/jenkins/config.xml
-  notify:
-    - 'Restart Jenkins'
-
-- name: Configure jenkins location
-  sudo: yes
-  template: src=jenkins_location.xml.j2 dest=/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
-  notify:
-    - 'Restart Jenkins'
-
-- name: Configure jenkins theme
-  sudo: yes
-  template: src=jenkins_simple_theme.xml.j2 dest=/var/lib/jenkins/org.codefirst.SimpleThemeDecorator.xml
-  notify:
-    - 'Restart Jenkins'
-
-# false in slave-to-master-switch means that is enabled
-- name: Enable security between nodes and master
-  sudo: yes
-  action: copy src=slave-to-master-switch dest=/var/lib/jenkins/secrets/slave-to-master-security-kill-switch
-
-- name: Whitelist paths for node -> master connection
-  sudo: yes
-  action: copy src=slave-to-master-control.conf dest=/var/lib/jenkins/secrets/filepath-filters.d/50-gui.conf
-
-- name: Upload nginx.conf
-  sudo: yes
-  action: copy src=nginx.conf dest=/etc/nginx/nginx.conf
-
-- name: Upload nginx vhost template
-  sudo: yes
-  template: src=jenkins_vhost.conf.j2 dest=/etc/nginx/sites-available/jenkins_vhost.conf owner=root group=root mode=0755
-
-- name: Create the link for site enabled specific configurations
-  sudo: yes
-  file: path=/etc/nginx/sites-enabled/jenkins_vhost.conf state=link src=/etc/nginx/sites-available/jenkins_vhost.conf
-
-- name: Deactivate the default nginx site
-  sudo: yes
-  file: path=/etc/nginx/sites-enabled/default
-          state=absent
-  notify: restart nginx
+# Configure nginx
+- include: nginx.yml
