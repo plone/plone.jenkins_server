@@ -16,5 +16,8 @@
 # Configure jenkins
 - include: jenkins.yml
 
+# Configure jenkins nodes
+- include: nodes.yml
+
 # Configure nginx
 - include: nginx.yml

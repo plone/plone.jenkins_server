@@ -1,0 +1,28 @@
+---
+# jenkins nodes related tasks file for jenkins_server
+
+- name: 'Create nodes folder'
+  sudo: yes
+  file:
+    path=/var/lib/jenkins/nodes
+    state=directory
+    owner=jenkins
+    group=jenkins
+
+- name: 'Create a folder for each node'
+  sudo: yes
+  file:
+    path=/var/lib/jenkins/nodes/{{ item }}
+    state=directory
+    owner=jenkins
+    group=jenkins
+  with_items: node_names
+
+- name: 'Configure each node'
+  sudo: yes
+  template:
+    src=node.xml.j2
+    dest=/var/lib/jenkins/nodes/{{ item }}/config.xml
+    owner=jenkins
+    group=jenkins
+  with_items: node_names
