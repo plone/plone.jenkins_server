@@ -1,16 +1,13 @@
-Jenkins Server
+Jenkins server
 ==============
-
 Provisioning for a [Jenkins CI server](http://jenkins-ci.org/) with [Nginx](http://nginx.org/) for [Plone](https://plone.org/) projects.
 
 Requirements
 ------------
-
 None.
 
-Role Variables
+Role variables
 --------------
-
 You can set different variables,
 that change the ones in *defaults/main.yml* or even better add them to *vars/main.yml*.
 
@@ -32,9 +29,8 @@ this role needs some other variables, that **must** be provided:
   * simple_theme_css_url: URL to a CSS file for UI customizations *(needs to be made conditional)*
   * simple_theme_js_url: URL to a JS file for UI/interaction customizations *(needs to be made conditional)*
 
-Example Playbook
+Example playbook
 ----------------
-
 Example of how to use this role:
 
     - hosts: jenkins.plone.org
@@ -58,16 +54,14 @@ Example of how to use this role:
 
 Nodes playbook
 --------------
-
 Looking for the ansible playbook for nodes?
-Look no further: [plone.jenkins_node](https://github.com/plone/plone.jenkins_node/)
+
+Look no further: [plone.jenkins_node](https://galaxy.ansible.com/list#/roles/3517)
 
 License
 -------
-
 GPLv2
 
-Author Information
+Author information
 ------------------
-
-Plone Community.
+[Plone](https://plone.org/) Community.
