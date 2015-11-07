@@ -39,6 +39,7 @@ dependencies:
        'github',
        'clone-workspace-scm',
        'htmlpublisher',
+       'embeddable-build-status',
        'github-api', # dep
        'git-client', # dep
        'scm-api', # dep
