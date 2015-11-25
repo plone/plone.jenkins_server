@@ -40,7 +40,6 @@ dependencies:
        'clone-workspace-scm',
        'htmlpublisher',
        'embeddable-build-status',
-       'postbuildscript',
        'github-api', # dep
        'git-client', # dep
        'scm-api', # dep
