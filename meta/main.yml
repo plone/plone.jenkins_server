@@ -56,5 +56,6 @@ dependencies:
        'workflow-scm-step', # workflow dep
        'workflow-step-api', # workflow dep
        'workflow-support', # workflow dep
+       'performance', # jMeter plugin
      ]
    }
