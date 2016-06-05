@@ -2,13 +2,13 @@
 # nginx related tasks file for jenkins_server
 
 - name: Upload nginx.conf
-  sudo: yes
+  become: yes
   copy:
     src=nginx.conf
     dest=/etc/nginx/nginx.conf
 
 - name: Upload nginx vhost template
-  sudo: yes
+  become: yes
   template:
     src=jenkins_vhost.conf.j2
     dest=/etc/nginx/sites-available/jenkins_vhost.conf
@@ -17,14 +17,14 @@
     mode=0755
 
 - name: Create the link for site enabled specific configurations
-  sudo: yes
+  become: yes
   file:
     path=/etc/nginx/sites-enabled/jenkins_vhost.conf
     state=link
     src=/etc/nginx/sites-available/jenkins_vhost.conf
 
 - name: Deactivate the default nginx site
-  sudo: yes
+  become: yes
   file:
     path=/etc/nginx/sites-enabled/default
     state=absent

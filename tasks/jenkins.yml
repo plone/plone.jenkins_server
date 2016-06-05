@@ -2,14 +2,14 @@
 # jenkins related tasks file for jenkins_server
 
 - name: Push jenkins conf
-  sudo: yes
+  become: yes
   copy:
     src=jenkins.conf
     dest=/etc/default/jenkins
     mode=0644
 
 - name: Configure jenkins
-  sudo: yes
+  become: yes
   template:
     src=jenkins_config.xml.j2
     dest=/var/lib/jenkins/config.xml
@@ -17,7 +17,7 @@
     - 'Restart Jenkins'
 
 - name: Configure jenkins location
-  sudo: yes
+  become: yes
   template:
     src=jenkins_location.xml.j2
     dest=/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
@@ -25,7 +25,7 @@
     - 'Restart Jenkins'
 
 - name: Configure jenkins theme
-  sudo: yes
+  become: yes
   template:
     src=jenkins_simple_theme.xml.j2
     dest=/var/lib/jenkins/org.codefirst.SimpleThemeDecorator.xml
@@ -34,13 +34,13 @@
 
 # false in slave-to-master-switch means that is enabled
 - name: Enable security between nodes and master
-  sudo: yes
+  become: yes
   copy:
     src=slave-to-master-switch
     dest=/var/lib/jenkins/secrets/slave-to-master-security-kill-switch
 
 - name: Whitelist paths for node -> master connection
-  sudo: yes
+  become: yes
   copy:
     src=slave-to-master-control.conf
     dest=/var/lib/jenkins/secrets/filepath-filters.d/50-gui.conf

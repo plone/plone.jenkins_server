@@ -2,12 +2,12 @@
 # tasks file for jenkins_server
 
 - name: Update
-  sudo: yes
+  become: yes
   apt:
     update_cache=yes
 
 - name: Install system dependencies
-  sudo: yes
+  become: yes
   apt:
     name={{ item }}
     state=installed
