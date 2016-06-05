@@ -57,5 +57,6 @@ dependencies:
        'workflow-step-api', # workflow dep
        'workflow-support', # workflow dep
        'performance', # jMeter plugin
+       'shiningpanda', # virtual environments
      ]
    }
