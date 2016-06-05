@@ -12,6 +12,11 @@ galaxy_info:
   categories:
   - development
 dependencies:
+ - { role: gforcada.compile-python
+     python_26: true
+     pillow: true
+     lxml: true
+ }
  - { role: ansible-jenkins,
      plugins: [
        'python',
