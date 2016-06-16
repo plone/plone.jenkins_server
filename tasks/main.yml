@@ -11,7 +11,7 @@
   apt:
     name={{ item }}
     state=installed
-  with_items: dependencies
+  with_items: "{{ dependencies }}"
 
 # Configure jenkins
 - include: jenkins.yml
