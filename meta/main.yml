@@ -10,7 +10,7 @@ galaxy_info:
     versions:
       - trusty
   categories:
-  - development
+    - development
 dependencies:
  - { role: gforcada.compile-python,
      python_26: true,
