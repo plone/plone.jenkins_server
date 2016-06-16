@@ -18,8 +18,10 @@ dependencies:
      lxml: true,
      become: true,
  }
- - { role: ansible-jenkins,
-     plugins: [
+ - { role: geerlingguy.jenkins,
+     jenkins_repo_url: "deb https://pkg.jenkins.io/debian binary/",
+     jenkins_repo_key_url: "https://pkg.jenkins.io/debian/jenkins.io.key",
+     jenkins_plugins: [
        'python',
        'violations',
        'build-user-vars-plugin',
