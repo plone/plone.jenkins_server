@@ -1,13 +1,6 @@
 ---
 # jenkins related tasks file for jenkins_server
 
-- name: Push jenkins conf
-  become: yes
-  copy:
-    src=jenkins.conf
-    dest=/etc/default/jenkins
-    mode=0644
-
 - name: Configure jenkins
   become: yes
   template:
