@@ -16,6 +16,7 @@ dependencies:
      python_26: true,
      pillow: true,
      lxml: true,
+     become: true,
  }
  - { role: ansible-jenkins,
      plugins: [
