@@ -6,6 +6,7 @@
   copy:
     src=nginx.conf
     dest=/etc/nginx/nginx.conf
+  notify: restart nginx
 
 - name: Upload nginx vhost template
   become: yes
@@ -15,6 +16,7 @@
     owner=root
     group=root
     mode=0755
+  notify: restart nginx
 
 - name: Create the link for site enabled specific configurations
   become: yes
@@ -22,6 +24,7 @@
     path=/etc/nginx/sites-enabled/jenkins_vhost.conf
     state=link
     src=/etc/nginx/sites-available/jenkins_vhost.conf
+  notify: restart nginx
 
 - name: Deactivate the default nginx site
   become: yes
