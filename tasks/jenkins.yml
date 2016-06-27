@@ -25,6 +25,14 @@
   notify:
     - 'Restart Jenkins'
 
+- name: Configure xvfb plugin
+  become: yes
+  copy:
+    src=xvfb.xml
+    dest=/var/lib/jenkins/org.jenkinsci.plugins.xvfb.Xvfb.xml
+  notify:
+    - 'Restart Jenkins'
+
 # false in slave-to-master-switch means that is enabled
 - name: Enable security between nodes and master
   become: yes
