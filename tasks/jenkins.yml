@@ -1,13 +1,6 @@
 ---
 # jenkins related tasks file for jenkins_server
 
-- name: Push jenkins conf
-  become: yes
-  copy:
-    src=jenkins.conf
-    dest=/etc/default/jenkins
-    mode=0644
-
 - name: Configure jenkins
   become: yes
   template:
@@ -29,6 +22,14 @@
   template:
     src=jenkins_simple_theme.xml.j2
     dest=/var/lib/jenkins/org.codefirst.SimpleThemeDecorator.xml
+  notify:
+    - 'Restart Jenkins'
+
+- name: Configure xvfb plugin
+  become: yes
+  copy:
+    src=xvfb.xml
+    dest=/var/lib/jenkins/org.jenkinsci.plugins.xvfb.Xvfb.xml
   notify:
     - 'Restart Jenkins'
 
