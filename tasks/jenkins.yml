@@ -7,7 +7,7 @@
     src=jenkins_config.xml.j2
     dest=/var/lib/jenkins/config.xml
   notify:
-    - 'Restart Jenkins'
+    - 'restart jenkins'
 
 - name: Configure jenkins location
   become: yes
@@ -15,7 +15,7 @@
     src=jenkins_location.xml.j2
     dest=/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
   notify:
-    - 'Restart Jenkins'
+    - 'restart jenkins'
 
 - name: Configure jenkins theme
   become: yes
@@ -23,7 +23,7 @@
     src=jenkins_simple_theme.xml.j2
     dest=/var/lib/jenkins/org.codefirst.SimpleThemeDecorator.xml
   notify:
-    - 'Restart Jenkins'
+    - 'restart jenkins'
 
 - name: Configure xvfb plugin
   become: yes
@@ -31,7 +31,7 @@
     src=xvfb.xml
     dest=/var/lib/jenkins/org.jenkinsci.plugins.xvfb.Xvfb.xml
   notify:
-    - 'Restart Jenkins'
+    - 'restart jenkins'
 
 # false in slave-to-master-switch means that is enabled
 - name: Enable security between nodes and master

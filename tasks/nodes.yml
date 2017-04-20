@@ -27,4 +27,4 @@
     group=jenkins
   with_items: "{{ node_names }}"
   notify:
-    - 'Restart Jenkins'
+    - 'restart jenkins'
