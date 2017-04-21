@@ -12,6 +12,22 @@ galaxy_info:
   categories:
     - development
 dependencies:
+ - { role: "geerlingguy.munin",
+     munin_hosts: [
+      { name: "jenkins.plone.org",
+         address: "127.0.0.1",
+         extra: ["use_node_name yes"]
+     }
+     ],
+     munin_alerts: [
+      { name: "Gil Forcada",
+         email: "gil.gnome@gmail.com",
+         subject: "Munin-notification for ${var:group} :: ${var:host}",
+         level: "warning critical"
+     }
+     ]
+ }
+ - { role: geerlingguy.munin-node }
  - { role: gforcada.compile-python,
      python_26: true,
      pillow: true,
