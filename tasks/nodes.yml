@@ -12,11 +12,11 @@
 - name: 'Create a folder for each node'
   become: yes
   file:
-    path="/var/lib/jenkins/nodes/{{ item }}"
+    path="/var/lib/jenkins/nodes/{{ item.name }}"
     state=directory
     owner=jenkins
     group=jenkins
-  with_items: "{{ node_names }}"
+  with_items: "{{ nodes_info }}"
 
 - name: 'Configure each node'
   become: yes
@@ -25,6 +25,6 @@
     dest="/var/lib/jenkins/nodes/{{ item }}/config.xml"
     owner=jenkins
     group=jenkins
-  with_items: "{{ node_names }}"
+  with_items: "{{ nodes_info }}"
   notify:
     - 'restart jenkins'

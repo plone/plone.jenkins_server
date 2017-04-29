@@ -16,9 +16,13 @@ dependencies:
 #  - random_admin_2
 #github_orgs:
 #  - org_1
-# node_names:
-#  - Node1
-#  - Node2
+#nodes_info:
+#  - name: "Node1"
+#    host: "88.99.26.113"
+#    port: "8085"
+#  - name: "Node2"
+#    host: "88.99.26.113"
+#    port: "8086"
 # admin_email: joe@doe.io
 # simple_theme_css_url: http://somewhere.com/theme.css
 # simple_theme_js_url: http://somewhere.com/theme.js

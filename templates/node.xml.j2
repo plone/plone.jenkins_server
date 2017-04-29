@@ -1,19 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <slave>
-  <name>{{ item }}</name>
+  <name>{{ item.name }}</name>
   <description></description>
   <remoteFS>/home/jenkins</remoteFS>
   <numExecutors>3</numExecutors>
   <mode>NORMAL</mode>
   <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
   <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.9">
-    <host>{{ item | lower }}.{{ jenkins_server_name }}</host>
-    <port>22</port>
-    <credentialsId>107aa3bc-09b9-42b9-8298-394fe1d88532</credentialsId>
+    <host>{{ item.host }}</host>
+    <port>{{ item.port }}</port>
+    <credentialsId>new ssh key</credentialsId>
     <maxNumRetries>0</maxNumRetries>
     <retryWaitTime>0</retryWaitTime>
+    <sshHostKeyVerificationStrategy class="hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy"/>
   </launcher>
-  <label>rackspace Ubuntu14.04 Python27</label>
+  <label>hetzner Ubuntu16.04</label>
   <nodeProperties>
     <hudson.slaves.EnvironmentVariablesNodeProperty>
       <envVars serialization="custom">
@@ -24,18 +25,18 @@
           </default>
           <int>5</int>
           <string>PYTHON</string>
-          <string>/srv/python2.7.11/bin/python2.7</string>
+          <string>/usr/bin/python2.7</string>
           <string>PYTHON26</string>
-          <string>/srv/python2.6.9/bin/python2.6</string>
+          <string>/usr/bin/python2.6</string>
           <string>PYTHON27</string>
-          <string>/srv/python2.7.11/bin/python2.7</string>
+          <string>/usr/bin/python2.7</string>
           <string>PYTHON35</string>
-          <string>/srv/python3.5.1/bin/python3.5</string>
+          <string>/usr/bin/python3.5</string>
           <string>PATH</string>
           <string>$PATH:/home/jenkins/.local/bin</string>
         </tree-map>
       </envVars>
     </hudson.slaves.EnvironmentVariablesNodeProperty>
   </nodeProperties>
-  <userId>tisto</userId>
+  <userId>gforcada</userId>
 </slave>
