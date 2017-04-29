@@ -22,7 +22,7 @@
   become: yes
   template:
     src=node.xml.j2
-    dest="/var/lib/jenkins/nodes/{{ item }}/config.xml"
+    dest="/var/lib/jenkins/nodes/{{ item.name }}/config.xml"
     owner=jenkins
     group=jenkins
   with_items: "{{ nodes_info }}"
