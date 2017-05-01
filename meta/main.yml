@@ -20,11 +20,11 @@ dependencies:
      }
      ],
      munin_alerts: [
-      { name: "Gil Forcada",
+      { name: "gforcada",
          email: "gil.gnome@gmail.com",
          subject: "Munin-notification for ${var:group} :: ${var:host}",
          level: "warning critical"
-     }
+      }
      ]
  }
  - { role: geerlingguy.munin-node }
