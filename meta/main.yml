@@ -17,7 +17,12 @@ dependencies:
       { name: "jenkins.plone.org",
          address: "127.0.0.1",
          extra: ["use_node_name yes"]
-     }
+      },
+      {
+        name: "foundation-nodes.jenkins.plone.org",
+        address: "88.99.26.113",
+        extra: ["use_node_name yes"]
+      }
      ],
      munin_alerts: [
       { name: "gforcada",
