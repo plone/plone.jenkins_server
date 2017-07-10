@@ -30,6 +30,10 @@ server {
     client_body_buffer_size 128k;
   }
 
+  location /py3/ {
+    alias /srv/ztk-py3-status/html/;
+  }
+
   location /munin/static/ {
     alias /etc/munin/static/;
     expires modified +1w;
