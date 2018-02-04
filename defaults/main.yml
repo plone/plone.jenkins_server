@@ -1,6 +1,6 @@
 ---
 # defaults file for jenkins_server
-jenkins_url: http://jenkins.plone.org/
+jenkins_url: https://jenkins.plone.org/
 jenkins_server_name: jenkins.plone.org
 jenkins_port: 8080
 roboto_port: 8081
