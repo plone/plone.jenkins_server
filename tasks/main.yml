@@ -21,3 +21,6 @@
 
 # Configure nginx
 - include: nginx.yml
+
+# Add Let's Encrypt
+- include: letsencrypt.yml
