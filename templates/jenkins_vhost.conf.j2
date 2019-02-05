@@ -7,21 +7,6 @@ server {
     alias /var/www/html/.well-known/acme-challenge/;
   }
 
-  # force SSL for everything
-  location / {
-    return 301 https://$host$request_uri;
-  }
-}
-
-
-# HTTPS configuration for jenkins.plone.org
-server {
-  listen 443 ssl;
-  server_name {{ jenkins_server_name }};
-
-  ssl_certificate {{ letsencrypt_certificate }};
-  ssl_certificate_key {{ letsencrypt_certificate_key }};
-
   location / {
     proxy_pass              http://localhost:{{ jenkins_port }};
     proxy_redirect          default;

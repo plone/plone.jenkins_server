@@ -7,11 +7,6 @@ roboto_port: 8081
 dependencies:
   - nginx
 
-letsencrypt_account_key: /etc/pki/cert/private/letsencrypt_account.key
-letsencrypt_certificate_key: /etc/pki/cert/private/jenkins.plone.org.key
-letsencrypt_certificate_csr: /etc/pki/cert/csr/jenkins.plone.org.csr
-letsencrypt_certificate: /etc/nginx/ssl/jenkins.plone.org.crt
-
 # List of variables that need to be provided in order for this role to work.
 #
 #github_app_client_id: 1234567890
