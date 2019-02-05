@@ -3,11 +3,11 @@
   <disabledAdministrativeMonitors>
     <string>OldData</string>
   </disabledAdministrativeMonitors>
-  <version>2.0</version>
+  <version>2.150.2</version>
   <numExecutors>0</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
-  <authorizationStrategy class="org.jenkinsci.plugins.GithubAuthorizationStrategy" plugin="github-oauth@0.22.2">
+  <authorizationStrategy class="org.jenkinsci.plugins.GithubAuthorizationStrategy" plugin="github-oauth@0.31">
     <rootACL>
       <organizationNameList class="linked-list">
       {% for item in github_orgs %}
@@ -19,13 +19,13 @@
         <string>{{ item }}</string>
       {% endfor %}
       </adminUserNameList>
-      <authenticatedUserReadPermission>false</authenticatedUserReadPermission>
+      <authenticatedUserReadPermission>true</authenticatedUserReadPermission>
       <useRepositoryPermissions>false</useRepositoryPermissions>
       <authenticatedUserCreateJobPermission>false</authenticatedUserCreateJobPermission>
       <allowGithubWebHookPermission>true</allowGithubWebHookPermission>
       <allowCcTrayPermission>false</allowCcTrayPermission>
       <allowAnonymousReadPermission>true</allowAnonymousReadPermission>
-      <allowAnonymousJobStatusPermission>false</allowAnonymousJobStatusPermission>
+      <allowAnonymousJobStatusPermission>true</allowAnonymousJobStatusPermission>
     </rootACL>
   </authorizationStrategy>
   <securityRealm class="org.jenkinsci.plugins.GithubSecurityRealm">
@@ -71,7 +71,7 @@
         <hudson.views.LastFailureColumn/>
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
       </columns>
       <includeRegex>.*theme.*</includeRegex>
       <recurse>false</recurse>
@@ -94,7 +94,7 @@
         <hudson.views.LastFailureColumn/>
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
       </columns>
       <includeRegex>.*plip.*</includeRegex>
       <recurse>false</recurse>
@@ -107,6 +107,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>roboshots</string>
       </jobNames>
       <jobFilters/>
       <columns>
@@ -117,7 +118,7 @@
         <hudson.views.LastFailureColumn/>
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
       </columns>
       <includeRegex>qa-.*</includeRegex>
       <recurse>false</recurse>
@@ -144,7 +145,7 @@
       <includeRegex>.*dependencies.*</includeRegex>
       <recurse>false</recurse>
     </listView>
-    <hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.9.7">
+    <hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.10">
       <owner class="hudson" reference="../../.."/>
       <name>Core</name>
       <filterExecutors>false</filterExecutors>
@@ -152,35 +153,51 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>Buildout Coredev Pipeline</string>
+        <string>mockup</string>
         <string>plone-4.3-python-2.6</string>
         <string>plone-4.3-python-2.7</string>
         <string>plone-5.0-python-2.7</string>
         <string>plone-5.0-python-2.7-at</string>
-        <string>plone-5.0-python-2.7-robot</string>
-        <string>plone-5.1-js</string>
+        <string>plone-5.0-python-2.7-robot-chrome</string>
+        <string>plone-5.0-python-2.7-robot-firefox</string>
         <string>plone-5.1-python-2.7</string>
         <string>plone-5.1-python-2.7-at</string>
-        <string>plone-5.1-python-2.7-robot</string>
+        <string>plone-5.1-python-2.7-robot-chrome</string>
+        <string>plone-5.1-python-2.7-robot-firefox</string>
+        <string>plone-5.2-python-2.7</string>
+        <string>plone-5.2-python-2.7-robot-chrome</string>
+        <string>plone-5.2-python-2.7-robot-firefox</string>
+        <string>plone-5.2-python-3.6</string>
+        <string>plone-5.2-python-3.6-robot-chrome</string>
+        <string>plone-5.2-python-3.6-robot-firefox</string>
+        <string>plone-5.2-python-3.7</string>
+        <string>plone-5.2-python-3.7-robot-chrome</string>
+        <string>plone-5.2-python-3.7-robot-firefox</string>
+        <string>plone-react</string>
         <string>pull-request-4.3</string>
         <string>pull-request-5.0</string>
         <string>pull-request-5.1</string>
+        <string>pull-request-5.2</string>
+        <string>pull-request-5.2-3.6</string>
+        <string>pull-request-5.2-3.7</string>
       </jobNames>
       <jobFilters/>
       <columns>
         <hudson.views.StatusColumn/>
         <hudson.views.WeatherColumn/>
         <hudson.views.JobColumn/>
-        <jenkins.plugins.extracolumns.BuildDurationColumn plugin="extra-columns@1.17">
-          <buildDurationType>1</buildDurationType>
+        <jenkins.plugins.extracolumns.BuildDurationColumn plugin="extra-columns@1.20">
+          <buildDurationType>0</buildDurationType>
         </jenkins.plugins.extracolumns.BuildDurationColumn>
         <hudson.views.LastDurationColumn/>
-        <jenkins.plugins.extracolumns.TestResultColumn plugin="extra-columns@1.17">
+        <jenkins.plugins.extracolumns.TestResultColumn plugin="extra-columns@1.20">
           <testResultFormat>3</testResultFormat>
         </jenkins.plugins.extracolumns.TestResultColumn>
-        <jenkins.plugins.extracolumns.TestResultColumn plugin="extra-columns@1.17">
+        <jenkins.plugins.extracolumns.TestResultColumn plugin="extra-columns@1.20">
           <testResultFormat>4</testResultFormat>
         </jenkins.plugins.extracolumns.TestResultColumn>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
         <hudson.views.BuildButtonColumn/>
       </columns>
       <recurse>false</recurse>
@@ -230,56 +247,9 @@
         <hudson.views.LastFailureColumn/>
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
       </columns>
       <includeRegex>package-.*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>Release</name>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
-      </columns>
-      <includeRegex>release-.*</includeRegex>
-      <recurse>false</recurse>
-    </listView>
-    <listView>
-      <owner class="hudson" reference="../../.."/>
-      <name>py3</name>
-      <description></description>
-      <filterExecutors>false</filterExecutors>
-      <filterQueue>false</filterQueue>
-      <properties class="hudson.model.View$PropertyList"/>
-      <jobNames>
-        <comparator class="hudson.util.CaseInsensitiveComparator"/>
-      </jobNames>
-      <jobFilters/>
-      <columns>
-        <hudson.views.StatusColumn/>
-        <hudson.views.WeatherColumn/>
-        <hudson.views.JobColumn/>
-        <hudson.views.LastSuccessColumn/>
-        <hudson.views.LastFailureColumn/>
-        <hudson.views.LastDurationColumn/>
-        <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
-      </columns>
-      <includeRegex>py3-.*</includeRegex>
       <recurse>false</recurse>
     </listView>
     <listView>
@@ -301,14 +271,66 @@
         <hudson.views.LastFailureColumn/>
         <hudson.views.LastDurationColumn/>
         <hudson.views.BuildButtonColumn/>
-        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.4"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
       </columns>
       <includeRegex>.*addon.*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Translations</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
+      </columns>
+      <includeRegex>plone.*i18n.*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Experimental</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>5.2-pipeline</string>
+        <string>exp-parallel-tests</string>
+        <string>Shuffle tests</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+        <hudson.plugins.favorite.column.FavoriteColumn plugin="favorite@2.3.2"/>
+        <hudson.plugins.robot.view.RobotListViewColumn plugin="robot@1.6.5"/>
+      </columns>
       <recurse>false</recurse>
     </listView>
   </views>
   <primaryView>Core</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
   <label></label>
+  <crumbIssuer class="hudson.security.csrf.DefaultCrumbIssuer">
+    <excludeClientIPFromCrumb>true</excludeClientIPFromCrumb>
+  </crumbIssuer>
   <nodeProperties/>
 </hudson>
