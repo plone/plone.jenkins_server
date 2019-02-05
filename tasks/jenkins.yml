@@ -9,6 +9,14 @@
   notify:
     - 'restart jenkins'
 
+- name: Configure jenkins startup
+  become: yes
+  template:
+    src=jenkins.j2
+    dest=/etc/default/jenkins
+  notify:
+    - 'restart jenkins'
+
 - name: Configure jenkins location
   become: yes
   template:
